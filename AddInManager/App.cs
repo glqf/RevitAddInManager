@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Autodesk.Revit.UI;
 using RevitAddinManager.Command;
-using static RevitAddinManager.Model.BitmapSourceConverter;
+using static AddinManagerCore.BitmapSourceConverter;
 
 namespace RevitAddinManager
 {

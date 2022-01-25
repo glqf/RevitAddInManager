@@ -4,20 +4,19 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml;
+using ACadAddinManager.Command;
+using ACadAddinManager.Model;
+using ACadAddinManager.View;
 using AddinManagerCore;
-using Autodesk.Revit.UI;
-using RevitAddinManager.Command;
 using RevitAddinManager.Model;
-using RevitAddinManager.View.Control;
 using MessageBox = System.Windows.Forms.MessageBox;
 
-namespace RevitAddinManager.ViewModel
+namespace ACadAddinManager.ViewModel
 {
     public class AddInManagerViewModel : ViewModelBase
     {
         public bool IsRun { get; set; }
-        public ExternalCommandData ExternalCommandData { get; set; }
-        public View.FrmAddInManager FrmAddInManager { get; set; }
+        public FrmAddInManager FrmAddInManager { get; set; }
         public AssemLoader AssemLoader { get; set; }
 
         public AddinManagerBase MAddinManagerBase { get; set; }
@@ -217,11 +216,11 @@ namespace RevitAddinManager.ViewModel
             CommandItems = FreshTreeItems(false, this.MAddinManagerBase.AddinManager.Commands);
             ApplicationItems = FreshTreeItems(false, this.MAddinManagerBase.AddinManager.Applications);
         }
-        public AddInManagerViewModel(ExternalCommandData data): this()
-        {
-            this.ExternalCommandData = data;
-            FreshItemStartupClick(false);
-        }
+        //public AddInManagerViewModel(ExternalCommandData data): this()
+        //{
+        //    this.ExternalCommandData = data;
+        //    FreshItemStartupClick(false);
+        //}
 
         public ObservableCollection<AddinModel> FreshTreeItems(bool isSearchText, Addins addins)
         {
@@ -348,7 +347,7 @@ namespace RevitAddinManager.ViewModel
             AddinType addinType = MAddinManagerBase.AddinManager.LoadAddin(fileName, AssemLoader);
             if (addinType == AddinType.Invalid)
             {
-                MessageBox.Show(Resource.LoadInvalid);
+                MessageBox.Show("Load Invalid");
                 return;
             }
 
@@ -460,18 +459,18 @@ namespace RevitAddinManager.ViewModel
         }
         private void SaveCommandClick()
         {
-            DialogResult DialogResult = MessageBox.Show($@"It will create file addin and load to Revit, do you want continue?", Resource.AppName,
+            DialogResult DialogResult = MessageBox.Show($@"It will create file addin and load to Revit, do you want continue?", DefaultSetting.AppName,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (DialogResult == DialogResult.Yes)
             {
 
                 if (!this.MAddinManagerBase.AddinManager.HasItemsToSave())
                 {
-                    MessageBox.Show(Resource.NoItemSelected, Resource.AppName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("No Item Selected", DefaultSetting.AppName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
                 MAddinManagerBase.AddinManager.SaveToAllUserManifest(this);
-                System.Windows.MessageBox.Show(FrmAddInManager, "Save Successfully", Resource.AppName, MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Windows.MessageBox.Show(FrmAddInManager, "Save Successfully", DefaultSetting.AppName, MessageBoxButton.OK, MessageBoxImage.Information);
                 FrmAddInManager.Close();
             }
 
@@ -518,7 +517,7 @@ namespace RevitAddinManager.ViewModel
             _addinStartup.Clear();
             string autodeskPath = "Autodesk\\Revit\\Addins";
             string AdskPluginPath = "Autodesk\\ApplicationPlugins\\";
-            string version = ExternalCommandData.Application.Application.VersionNumber;
+            string version = "2022";//ExternalCommandData.Application.Application.VersionNumber;
             string roaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string Folder1 = Path.Combine(roaming, autodeskPath, version);
             string programdata = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
@@ -632,7 +631,7 @@ namespace RevitAddinManager.ViewModel
                 revitAddin.SetToggleState();
             }
             FrmAddInManager.Close();
-            MessageBox.Show(Resource.Successfully, Resource.AppName);
+            MessageBox.Show("Successfully", DefaultSetting.AppName);
         }
         private void ClearCommandClick()
         {
@@ -651,14 +650,13 @@ namespace RevitAddinManager.ViewModel
             if (IsCurrentVersion)
             {
 
-                string folder = Path.Combine(folderPath, AdskPath,
-                    ExternalCommandData.Application.Application.VersionNumber);
+                string folder = Path.Combine(folderPath, AdskPath,"2022");
                 if (Directory.Exists(folder))
                 {
                     string[] filePaths = Directory.GetFiles(folder).Where(x => x.Contains(DefaultSetting.FileName)).ToArray();
                     if (filePaths.Length == 0)
                     {
-                        System.Windows.MessageBox.Show(FrmAddInManager, "File Empty!", Resource.AppName, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        System.Windows.MessageBox.Show(FrmAddInManager, "File Empty!", DefaultSetting.AppName, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         return;
                     }
                     foreach (string s in filePaths)
@@ -685,7 +683,7 @@ namespace RevitAddinManager.ViewModel
             }
             else
             {
-                MessageBox.Show(Resource.FileNotFound, Resource.AppName);
+                MessageBox.Show("FileNotFound", DefaultSetting.AppName);
             }
         }
         private void OpenLocalAddinCommandClick()
@@ -697,7 +695,7 @@ namespace RevitAddinManager.ViewModel
             }
             else
             {
-                MessageBox.Show(Resource.FileNotFound, Resource.AppName);
+                MessageBox.Show("FileNotFound", DefaultSetting.AppName);
             }
         }
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32104.313
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitTest", "RevitTest\RevitTest.csproj", "{D2F76E6D-2F22-4E04-8321-21118F0DF582}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "RevitTest\Test.csproj", "{D2F76E6D-2F22-4E04-8321-21118F0DF582}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{A8C653F0-9815-4238-A744-600D90EB1DD5}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,6 +16,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Installer", "Installer\Installer.csproj", "{E3C87D34-638C-47A0-A73A-D967B119458D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Build\Build.csproj", "{5016ED6D-5A9A-4F59-AE49-CAA9615798F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACadAddinManager", "ACadAddinManager\ACadAddinManager.csproj", "{CAF2C5B0-361D-42CA-BD29-1332DE230129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinManagerCore", "AddinManagerCore\AddinManagerCore.csproj", "{BDD6C863-C3D6-4242-B2C5-202097F97BA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +44,18 @@ Global
 		{5016ED6D-5A9A-4F59-AE49-CAA9615798F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5016ED6D-5A9A-4F59-AE49-CAA9615798F7}.Installer|Any CPU.ActiveCfg = Installer|Any CPU
 		{5016ED6D-5A9A-4F59-AE49-CAA9615798F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF2C5B0-361D-42CA-BD29-1332DE230129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF2C5B0-361D-42CA-BD29-1332DE230129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF2C5B0-361D-42CA-BD29-1332DE230129}.Installer|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF2C5B0-361D-42CA-BD29-1332DE230129}.Installer|Any CPU.Build.0 = Debug|Any CPU
+		{CAF2C5B0-361D-42CA-BD29-1332DE230129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF2C5B0-361D-42CA-BD29-1332DE230129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDD6C863-C3D6-4242-B2C5-202097F97BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD6C863-C3D6-4242-B2C5-202097F97BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD6C863-C3D6-4242-B2C5-202097F97BA7}.Installer|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD6C863-C3D6-4242-B2C5-202097F97BA7}.Installer|Any CPU.Build.0 = Debug|Any CPU
+		{BDD6C863-C3D6-4242-B2C5-202097F97BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD6C863-C3D6-4242-B2C5-202097F97BA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

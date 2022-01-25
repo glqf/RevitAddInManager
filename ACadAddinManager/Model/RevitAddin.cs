@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using AddinManagerCore;
+using RevitAddinManager.Model;
 
-namespace RevitAddinManager.Model
+namespace ACadAddinManager.Model
 {
     public class RevitAddin : ViewModelBase
     {
@@ -35,7 +36,7 @@ namespace RevitAddinManager.Model
             catch (UnauthorizedAccessException e)
             {
                 //TODO : Resource.NeedAdmin : Access Denied
-                throw new System.ArgumentException(Resource.NeedAdmin, e);
+                throw new System.ArgumentException("Need Adin", e);
             }
         }
         private bool RenamePath()

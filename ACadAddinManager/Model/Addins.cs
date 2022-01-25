@@ -2,9 +2,8 @@
 using System.Reflection;
 using System.Text;
 using AddinManagerCore;
-using Autodesk.Revit.Attributes;
 
-namespace RevitAddinManager.Model
+namespace ACadAddinManager.Model
 {
     public abstract class Addins
     {
@@ -90,46 +89,7 @@ namespace RevitAddinManager.Model
                         Type @interface = type2.GetInterface(fullName);
                         if (null != @interface)
                         {
-                            TransactionMode? transactionMode = null;
-                            RegenerationOption? regenerationOption = null;
-                            JournalingMode? journalingMode = null;
-                            if (type != AddinType.Application)
-                            {
-                                Attribute[] customAttributes = Attribute.GetCustomAttributes(type2, false);
-                                foreach (Attribute attribute in customAttributes)
-                                {
-                                    if (attribute is RegenerationAttribute)
-                                    {
-                                        RegenerationAttribute regenerationAttribute = (RegenerationAttribute)attribute;
-                                        regenerationOption = new RegenerationOption?(regenerationAttribute.Option);
-                                    }
-                                    if (attribute is TransactionAttribute)
-                                    {
-                                        TransactionAttribute transactionAttribute = (TransactionAttribute)attribute;
-                                        transactionMode = new TransactionMode?(transactionAttribute.Mode);
-                                    }
-                                    if (attribute is JournalingAttribute)
-                                    {
-                                        JournalingAttribute journalingAttribute = (JournalingAttribute)attribute;
-                                        journalingMode = new JournalingMode?(journalingAttribute.Mode);
-                                    }
-                                    if (transactionMode != null && regenerationOption != null)
-                                    {
-                                        break;
-                                    }
-                                }
-                                if (transactionMode == null)
-                                {
-                                    list2.Add(type2.Name);
-                                    goto IL_1A7;
-                                }
-                                if (transactionMode != StaticUtil.TransactMode)
-                                {
-                                    list3.Add(type2.Name);
-                                    goto IL_1A7;
-                                }
-                            }
-                            AddinItem item = new AddinItem(originalAssemblyFilePath, Guid.NewGuid(), type2.FullName, type, transactionMode, regenerationOption, journalingMode);
+                            AddinItem item = new AddinItem(originalAssemblyFilePath, Guid.NewGuid(), type2.FullName, type);
                             list.Add(item);
                         }
                     }
@@ -149,7 +109,7 @@ namespace RevitAddinManager.Model
                     stringBuilder.AppendLine(value);
                 }
                 stringBuilder.Append("implements IExternalCommand but doesn't contain both RegenerationAttribute and TransactionAttribute!");
-                StaticUtil.ShowWarning(stringBuilder.ToString());
+                MessageBox.Show(stringBuilder.ToString(), DefaultSetting.AppName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             if (list3.Count > 0)
             {
@@ -160,7 +120,7 @@ namespace RevitAddinManager.Model
                     stringBuilder2.AppendLine(value2);
                 }
                 stringBuilder2.Append(" are not the same as the mode set to Add-In Manager!");
-                StaticUtil.ShowWarning(stringBuilder2.ToString());
+                MessageBox.Show(stringBuilder2.ToString(), DefaultSetting.AppName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             return list;
         }

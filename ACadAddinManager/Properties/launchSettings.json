@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ACadAddinManager": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Program Files\\Autodesk\\AutoCAD 2022"
+    }
+  }
+}

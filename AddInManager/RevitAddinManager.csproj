@@ -35,6 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AddinManagerCore\AddinManagerCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\dev.ico" />
     <Resource Include="Resources\dev.png" />
     <Resource Include="Resources\folder.png" />

@@ -3,8 +3,9 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using AddinManagerCore;
+using RevitAddinManager.Model;
 
-namespace RevitAddinManager.Model
+namespace ACadAddinManager.Model
 {
     public class ManifestFile
     {
@@ -239,7 +240,7 @@ namespace RevitAddinManager.Model
                 xmlElement.InnerText = command.Description;
                 commandEle.AppendChild(xmlElement);
             }
-            string text = command.VisibilityMode.ToString();
+            string text = String.Empty; //command.VisibilityMode.ToString();
             if (!string.IsNullOrEmpty(text))
             {
                 text = text.Replace(",", " |");

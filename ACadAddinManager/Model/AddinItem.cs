@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using AddinManagerCore;
-using Autodesk.Revit.Attributes;
+using RevitAddinManager.Model;
 
-namespace RevitAddinManager.Model
+namespace ACadAddinManager.Model
 {
     public class AddinItem : IAddinNode
     {
@@ -16,14 +16,10 @@ namespace RevitAddinManager.Model
             this.FullClassName = string.Empty;
             this.m_name = string.Empty;
             this.Save = true;
-            this.VisibilityMode = VisibilityMode.AlwaysVisible;
         }
 
-        public AddinItem(string assemblyPath, Guid clientId, string fullClassName, AddinType type, TransactionMode? transactionMode, RegenerationOption? regenerationOption, JournalingMode? journalingMode)
+        public AddinItem(string assemblyPath, Guid clientId, string fullClassName, AddinType type)
         {
-            this.TransactionMode = transactionMode;
-            this.RegenerationMode = regenerationOption;
-            this.JournalingMode = journalingMode;
             this.AddinType = type;
             this.m_assemblyPath = assemblyPath;
             this.AssemblyName = Path.GetFileName(this.m_assemblyPath);
@@ -134,16 +130,6 @@ namespace RevitAddinManager.Model
 
 
         public bool Hidden { get; set; }
-
-
-        public TransactionMode? TransactionMode { get; set; }
-
-
-        public RegenerationOption? RegenerationMode { get; set; }
-
-
-        public JournalingMode? JournalingMode { get; set; }
-
 
         public override string ToString()
         {

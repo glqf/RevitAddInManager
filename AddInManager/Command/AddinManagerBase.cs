@@ -79,7 +79,6 @@ namespace RevitAddinManager.Command
             return result;
         }
 
-
         public static AddinManagerBase Instance
         {
             get

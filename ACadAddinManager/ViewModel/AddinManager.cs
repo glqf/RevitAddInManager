@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using ACadAddinManager.Model;
 using AddinManagerCore;
-using RevitAddinManager.Model;
 
-namespace RevitAddinManager.ViewModel
+namespace ACadAddinManager.ViewModel
 {
     public class AddinManager
     {
@@ -38,7 +38,7 @@ namespace RevitAddinManager.ViewModel
         private void GetIniFilePaths()
         {
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string path = Path.Combine(folderPath, Resource.AppName);
+            string path = Path.Combine(folderPath, DefaultSetting.AppName);
             string filePath = Path.Combine(path, DefaultSetting.AimInternalName);
             this._mAimIniFile = new IniFile(filePath);
             Process currentProcess = Process.GetCurrentProcess();
@@ -77,8 +77,8 @@ namespace RevitAddinManager.ViewModel
                 assemLoader.HookAssemblyResolve();
 
                 Assembly assembly = assemLoader.LoadAddinsToTempFolder(filePath, true);
-                list = this._mCommands.LoadItems(assembly, StaticUtil.CommandFullName, filePath, AddinType.Command);
-                list2 = this._mApplications.LoadItems(assembly, StaticUtil.AppFullName, filePath, AddinType.Application);
+                //list = this._mCommands.LoadItems(assembly, StaticUtil.CommandFullName, filePath, AddinType.Command);
+                //list2 = this._mApplications.LoadItems(assembly, StaticUtil.AppFullName, filePath, AddinType.Application);
             }
             catch (Exception e)
             {
@@ -183,8 +183,7 @@ namespace RevitAddinManager.ViewModel
             }
             else
             {
-                string folder = Path.Combine(folderPath, DefaultSetting.AdskPath,
-                    vm.ExternalCommandData.Application.Application.VersionNumber);
+                string folder = Path.Combine(folderPath, DefaultSetting.AdskPath,"2022");
                 folders.Add(folder);
             }
 
