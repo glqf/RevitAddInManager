@@ -428,6 +428,11 @@ public class AddInManagerViewModel : ViewModelBase
     }
     private void SaveCommandClick()
     {
+        if (IsTabStartSelected)
+        {
+            System.Windows.MessageBox.Show("Please Select Tab Command Or App To Use !",Resource.AppName,MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            return;
+        }
         var DialogResult = MessageBox.Show($@"It will create file addin and load to Revit, do you want continue?", Resource.AppName,
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         if (DialogResult == DialogResult.Yes)
