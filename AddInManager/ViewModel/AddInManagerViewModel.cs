@@ -496,7 +496,7 @@ public class AddInManagerViewModel : ViewModelBase
         var revitAddins = GetAddinFromFolder(Folder1);
         var addinsProgramData = GetAddinFromFolder(Folder2);
         var addinsPlugins = GetAddinFromFolder(Folder3);
-        revitAddins.ForEach(delegate (RevitAddin x)
+        revitAddins.ForEach(x =>
         {
             _addinStartup.Add(x);
             x.IsReadOnly = true;
