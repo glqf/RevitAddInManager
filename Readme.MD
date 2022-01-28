@@ -42,9 +42,14 @@ Some feature include:
 
 ### Console
 
+Run C# Scripts within the Revit Environment, a code base from [Revit.ScriptCS](https://github.com/sridharbaldava/Revit.ScriptCS)  is custom to suitable for the project working.
+
 - [x] Execute Code Csharp
-- [x] Embeded Code base RevitAPI
+- [x] Access to active revit document using doc variable
 - [x] Intellisense code base support RevitAPI
+- [x] Intellisense code base support RevitAPI
+- [x] Code fix suggestions
+- [x] Script output window when return code
 
 ![](pic/console.gif)
 
