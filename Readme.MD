@@ -40,6 +40,14 @@ Some feature include:
 
 ![](pic/AddinManager.png)
 
+### Console
+
+- [x] Execute Code Csharp
+- [x] Embeded Code base RevitAPI
+- [x] Intellisense code base support RevitAPI
+
+![](pic/console.gif)
+
 ### Command
 
 - [x] AddInManagerManual
