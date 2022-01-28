@@ -1,14 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <UseWPF>true</UseWPF>
-    <LangVersion>latest</LangVersion>
-    <PlatformTarget>x64</PlatformTarget>
-    <ImplicitUsings>true</ImplicitUsings>
-    <UseWindowsForms>true</UseWindowsForms>
     <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>x64</PlatformTarget>
+    <Nullable>enable</Nullable>
     <Configurations>Debug R22</Configurations>
     <Configurations>$(Configurations);Release R14;Release R15;Release R16;Release R17;Release R18;Release R19;Release R20;Release R21;Release R22</Configurations>
   </PropertyGroup>
+
   <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -59,86 +61,27 @@
     <Version>$(RevitVersion)</Version>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Description>A Project Support for developer in revit </Description>
+    <Description>A Project Support run Csharp console in Revit</Description>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Resources\dev.ico" />
-    <None Remove="Resources\dev.png" />
-    <None Remove="Resources\folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" />
+    <PackageReference Include="AvalonEdit" Version="6.0.1" />
+    <PackageReference Include="Dirkster.AvalonDock" Version="4.40.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="3.6.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.6.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="3.6.0" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2022.1.0" />
     <PackageReference Include="RoslynPad.Editor.Windows" Version="1.2.0" />
     <PackageReference Include="RoslynPad.Roslyn" Version="3.6.0" />
     <PackageReference Include="RoslynPad.Roslyn.Windows" Version="3.6.0" />
   </ItemGroup>
+  
   <ItemGroup>
-    <ProjectReference Include="..\RevitConsole\RevitConsole.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\dev.ico" />
-    <Resource Include="Resources\dev.png" />
-    <Resource Include="Resources\folder.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Update="View\AssemblyLoader.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="View\FrmAddInManager.xaml">
+    <Page Update="Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RoslynEditor.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  
-  <Target Name="CopyFiles" AfterTargets="CoreBuild">
-    <ItemGroup>
-      <RootItem Include="$(ProjectDir)*.addin" />
-      <!--<AddinItem Include="$(TargetDir)$(AssemblyName).*" />-->
-      <AddinItem Include="$(TargetDir)*.dll" />
-      <AddinItem Include="$(TargetDir)*.pdb" />
-      <!--File Want add more to include-->
-    </ItemGroup>
 
-    <PropertyGroup>
-      <RootDir>bin\AddIn $(RevitVersion) $(Configuration)\</RootDir>
-      <AddinDir>$(RootDir)$(AssemblyName)\</AddinDir>
-    </PropertyGroup>
-
-    <Copy SourceFiles="@(RootItem)" DestinationFolder="$(RootDir)" />
-    <Copy SourceFiles="@(AddinItem)" DestinationFolder="$(AddinDir)" />
-
-    <ItemGroup>
-      <AddinFiles Include="$(RootDir)**\*.*" />
-    </ItemGroup>
-
-    <Copy SourceFiles="@(AddinFiles)" DestinationFolder="$(AppData)\Autodesk\Revit\Addins\$(RevitVersion)\%(RecursiveDir)" Condition="$(Configuration.Contains('Debug'))" />
-  </Target>
 </Project>
