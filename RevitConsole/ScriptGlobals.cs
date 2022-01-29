@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+#pragma warning disable CS8618
 
 namespace RevitConsole
 {

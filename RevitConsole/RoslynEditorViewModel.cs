@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Input;
 using Autodesk.Revit.UI;
 using Microsoft.Win32;
+// ReSharper disable All
+#pragma warning disable CS8625
 
 namespace RevitConsole
 {

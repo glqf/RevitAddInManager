@@ -129,7 +129,8 @@ Global
 		{2AF4C4F2-A006-41D0-AF61-D309C9D8DB00}.Release R20|x64.Build.0 = Release|Any CPU
 		{2AF4C4F2-A006-41D0-AF61-D309C9D8DB00}.Release R21|x64.ActiveCfg = Release|Any CPU
 		{2AF4C4F2-A006-41D0-AF61-D309C9D8DB00}.Release R21|x64.Build.0 = Release|Any CPU
-		{2AF4C4F2-A006-41D0-AF61-D309C9D8DB00}.Release R22|x64.ActiveCfg = Debug R22|Any CPU
+		{2AF4C4F2-A006-41D0-AF61-D309C9D8DB00}.Release R22|x64.ActiveCfg = Release R22|Any CPU
+		{2AF4C4F2-A006-41D0-AF61-D309C9D8DB00}.Release R22|x64.Build.0 = Release R22|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

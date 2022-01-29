@@ -3,6 +3,8 @@ using System.Reflection;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using RoslynPad.Roslyn;
+#pragma warning disable CS8603
+#pragma warning disable CS8625
 
 namespace RevitConsole
 {

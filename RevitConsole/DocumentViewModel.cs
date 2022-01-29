@@ -5,6 +5,8 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Formatting;
 using Microsoft.CodeAnalysis.Text;
 using TextDocument = ICSharpCode.AvalonEdit.Document.TextDocument;
+#pragma warning disable CS8618
+#pragma warning disable CS8625
 
 namespace RevitConsole
 {

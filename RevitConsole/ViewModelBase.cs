@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+#pragma warning disable CS8618
+#pragma warning disable CS8625
 
 namespace RevitConsole
 {

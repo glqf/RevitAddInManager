@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+#pragma warning disable CS8625
 
 namespace RevitConsole
 {

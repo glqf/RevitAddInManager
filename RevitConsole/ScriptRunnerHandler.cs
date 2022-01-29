@@ -3,6 +3,7 @@ using Autodesk.Revit.UI;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.CSharp.Scripting.Hosting;
 using Microsoft.CodeAnalysis.Scripting;
+#pragma warning disable CS8618
 
 namespace RevitConsole
 {
