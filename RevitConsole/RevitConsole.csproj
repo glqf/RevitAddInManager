@@ -69,7 +69,7 @@
     <PackageReference Include="Microsoft.CodeAnalysis" Version="3.6.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.6.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="3.6.0" />
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2022.1.0" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64"  Version="$(RevitVersion).*" />
     <PackageReference Include="RoslynPad.Editor.Windows" Version="1.2.0" />
     <PackageReference Include="RoslynPad.Roslyn" Version="3.6.0" />
     <PackageReference Include="RoslynPad.Roslyn.Windows" Version="3.6.0" />
