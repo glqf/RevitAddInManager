@@ -1,5 +1,16 @@
 # Changelog
 
+
+- 2022-01-29 **1.0.8**
+  - Support Console
+  - Execute code Csharp
+  - Save script to use multiple time
+  - Access to active revit document using doc variable
+  - Intellisense code base support RevitAPI and system
+  - Code fix suggestions
+  - Script output window when return code
+
+
 - 2022-01-27 **1.0.7**
   - Improve multiple version config support from R14-R23
   - Improve INotifyPropertyChanged Correct use with Commands and Applications

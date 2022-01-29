@@ -16,7 +16,6 @@
 
 ## WORK IN PROCESS
 
-- [x] Console
 - [ ] Add-in Extend for **Autocad** And **Naviswork**
 
 ## Summary
