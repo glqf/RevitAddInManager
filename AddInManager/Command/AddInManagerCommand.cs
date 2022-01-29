@@ -2,9 +2,19 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using RevitAddinManager.Model;
+using RevitConsole;
 
 namespace RevitAddinManager.Command;
 
+[Transaction(TransactionMode.Manual)]
+public class Console : IExternalCommand
+{
+    public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+    {
+        ConsoleCommand.Show();
+        return Result.Succeeded;
+    }
+}
 [Transaction(TransactionMode.Manual)]
 public class AddInManagerManual : IExternalCommand
 {
